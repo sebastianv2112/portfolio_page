@@ -7,7 +7,7 @@ const items = [
   'User Interface',
   'Product Design',
   'Vibe Coding',
-  'Agent Teams',
+  'Team Collaboration',
   'Interaction Design',
   'UX Research',
   'Prototyping',
