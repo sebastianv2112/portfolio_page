@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0A0A0A;
+  --color-dark-lighter: #1A1A1A;
+  --color-cream: #FAF7F2;
+  --color-cream-dark: #F0EBE3;
+  --color-accent-coral: #FF6B6B;
+  --color-accent-mint: #6EDCD0;
+  --color-accent-yellow: #FFD166;
+  --color-accent-violet: #A78BFA;
+  --color-accent-blue: #60A5FA;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "DM Serif Display", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-dark);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grid pattern overlay for hero */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Marquee animation fallback */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-accent-violet);
+  color: var(--color-dark);
+}
