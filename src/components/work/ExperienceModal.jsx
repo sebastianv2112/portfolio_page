@@ -103,12 +103,14 @@ export default function ExperienceModal({ experience, onClose }) {
               </div>
 
               {role.description && (
-                <p className="font-body text-dark/70 text-sm leading-relaxed mt-4 mb-4">
-                  {role.description}
-                </p>
+                <div className="font-body text-dark/70 text-sm leading-relaxed mt-4 mb-4 space-y-3">
+                  {role.description.split('\n\n').map((p, k) => (
+                    <p key={k}>{p}</p>
+                  ))}
+                </div>
               )}
 
-              {role.achievements.length > 0 && (
+              {role.achievements?.length > 0 && (
                 <div>
                   <p className="font-display font-semibold text-dark text-sm mb-3">
                     Mayores logros:
@@ -121,6 +123,29 @@ export default function ExperienceModal({ experience, onClose }) {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {role.subsections?.length > 0 && (
+                <div className="mt-4 space-y-5">
+                  <p className="font-display font-semibold text-dark text-sm">
+                    Mayores logros:
+                  </p>
+                  {role.subsections.map((sub, k) => (
+                    <div key={k}>
+                      <p className={`font-display font-semibold text-sm mb-2 ${colorText[experience.color]}`}>
+                        {sub.title}:
+                      </p>
+                      <ul className="space-y-2">
+                        {sub.items.map((item, j) => (
+                          <li key={j} className="flex items-start gap-2 font-body text-sm text-dark/70 leading-relaxed">
+                            <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 bg-current ${colorText[experience.color]}`} />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

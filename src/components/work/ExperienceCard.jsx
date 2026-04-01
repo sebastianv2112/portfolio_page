@@ -43,9 +43,16 @@ export default function ExperienceCard({ experience }) {
               </span>
             </div>
             <div>
-              <h3 className="font-display font-bold text-cream text-xl leading-tight">
-                {experience.company}
-              </h3>
+              <div className="flex items-center gap-2">
+                <h3 className="font-display font-bold text-cream text-xl leading-tight">
+                  {experience.company}
+                </h3>
+                {experience.current && (
+                  <span className="font-body text-[10px] font-semibold text-accent-mint bg-accent-mint/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    Actual
+                  </span>
+                )}
+              </div>
               <span className={`font-body text-sm ${colorText[experience.color] || 'text-accent-mint'}`}>
                 {experience.totalDuration}
               </span>
