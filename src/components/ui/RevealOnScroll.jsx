@@ -1,33 +1,41 @@
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { useRef, useEffect, useState } from 'react'
 
 export default function RevealOnScroll({ children, className = '', delay = 0 }) {
   const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
 
-  useGSAP(() => {
+  useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    if (prefersReduced) {
+      setVisible(true)
+      return
+    }
 
-    gsap.from(ref.current, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      delay,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 85%',
-        once: true,
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
       },
-    })
-  }, { scope: ref })
+      { threshold: 0.1 }
+    )
+
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <div ref={ref} className={className}>
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'translateY(0)' : 'translateY(30px)',
+        transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`,
+        willChange: visible ? 'auto' : 'opacity, transform',
+      }}
+    >
       {children}
     </div>
   )
