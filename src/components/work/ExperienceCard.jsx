@@ -49,7 +49,7 @@ export default function ExperienceCard({ experience }) {
                 </h3>
                 {experience.current && (
                   <span className="font-body text-[10px] font-semibold text-accent-mint bg-accent-mint/15 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                    Actual
+                    Current
                   </span>
                 )}
               </div>
@@ -77,7 +77,7 @@ export default function ExperienceCard({ experience }) {
             onClick={() => setOpen(true)}
             className={`mt-6 w-full py-2.5 rounded-xl border ${colorBorder[experience.color] || 'border-accent-mint'} ${colorText[experience.color] || 'text-accent-mint'} font-display font-semibold text-sm hover:bg-white/5 transition-colors duration-200`}
           >
-            Ver más
+            View more
           </button>
         </div>
       </div>

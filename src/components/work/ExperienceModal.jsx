@@ -113,7 +113,7 @@ export default function ExperienceModal({ experience, onClose }) {
               {role.achievements?.length > 0 && (
                 <div>
                   <p className="font-display font-semibold text-dark text-sm mb-3">
-                    Mayores logros:
+                    Key achievements:
                   </p>
                   <ul className="space-y-2">
                     {role.achievements.map((item, j) => (
@@ -129,7 +129,7 @@ export default function ExperienceModal({ experience, onClose }) {
               {role.subsections?.length > 0 && (
                 <div className="mt-4 space-y-5">
                   <p className="font-display font-semibold text-dark text-sm">
-                    Mayores logros:
+                    Key achievements:
                   </p>
                   {role.subsections.map((sub, k) => (
                     <div key={k}>
