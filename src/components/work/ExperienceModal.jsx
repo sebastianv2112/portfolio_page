@@ -152,28 +152,6 @@ export default function ExperienceModal({ experience, onClose }) {
           ))}
         </div>
 
-        {/* Gallery */}
-        <div className="px-6 sm:px-8 pb-8">
-          <div className="border-t border-dark/10 pt-6">
-            <h4 className="font-display font-bold text-dark text-base mb-4">Gallery</h4>
-            {experience.images.length > 0 ? (
-              <div className="grid grid-cols-2 gap-3">
-                {experience.images.map((src, i) => (
-                  <img key={i} src={src} alt={`${experience.company} work ${i + 1}`}
-                    className="w-full h-40 object-cover rounded-xl" />
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 gap-3">
-                {[1, 2, 3, 4].map((n) => (
-                  <div key={n} className="w-full h-40 rounded-xl bg-dark/5 flex items-center justify-center">
-                    <span className="font-body text-xs text-dark/30">Image {n}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
       </div>
     </div>,
     document.body
